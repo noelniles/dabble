@@ -1,2 +1,2 @@
-__all__ = ['basemodule']
+__all__ = ['BaseModule']
 

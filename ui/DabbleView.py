@@ -1,10 +1,12 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from ui import ModuleList
+from ui import ToolBar
 
-class DabbleViewer(QtWidgets.QMainWindow):
+class DabbleView(QtWidgets.QMainWindow):
     """Dabble user interface."""
     def __init__(self, directory, parent=None):
-        super(DabbleViewer, self).__init__(None)
+        super(DabbleView, self).__init__(parent)
         # Set up the layout.
         self.layout = QtWidgets.QGridLayout()
 
@@ -19,7 +21,7 @@ class DabbleViewer(QtWidgets.QMainWindow):
 
         # Keep a list of the OpenCV modules.
         self.modules = None # intially we have no modules
-        self.modules_list = ModuleList(self)
+        self.modules_list = ModuleList.ModuleList(self)
 
         # And add them to the GUI window.
         self.layout.addWidget(self.modules_list, 0, 1)
@@ -41,8 +43,14 @@ class DabbleViewer(QtWidgets.QMainWindow):
         # Set the central widget to the grid.
         self.setCentralWidget(central)
 
+        # Add the tool bar.
+        self.tb = ToolBar.ToolBar(self)
+        self.tb.addModuleSignal.connect(self.addModule)
         # Finally show the GUI.
         self.show()
+
+    def addModule(self):
+        print('got the signal')
 
     def centerAndResize(self):
         """Center the window and use 90% of the screen."""

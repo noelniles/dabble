@@ -13,7 +13,7 @@ it's output queue. When a downstream module requests a
 data packet this module will return the data packet from
 the top of the output stack.
 """
-import Queue
+from multiprocessing import Queue
 
 from PyQt5 import QtWidgets
 

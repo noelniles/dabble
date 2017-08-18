@@ -1,2 +1,2 @@
-__all__ = ['DabbleViewer', 'ModuleList']
+__all__ = ['DabbleView', 'ModuleList']
 

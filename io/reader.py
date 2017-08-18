@@ -11,17 +11,22 @@ just use a generator and yield the next data item.
 
 This class will put each item into a data packet.
 """
-
-
 class Reader:
     def __init__(self):
-        print('Made a reader')
+        self.data = None
+        self.type = None
+        self.size = None
 
-    def filenames(directory):
-        """This is a generator that will produce the next
-        item in the file list.
-        """
-        for entry in os.scandir(directory):
-            if entry.name.endswith(extension):
-                yield os.path.join(directory, entry.name)
 
+#class Reader:
+#    def __init__(self):
+#        print('Made a reader')
+#
+#    def filenames(directory):
+#        """This is a generator that will produce the next
+#        item in the file list.
+#        """
+#        for entry in os.scandir(directory):
+#            if entry.name.endswith(extension):
+#                yield os.path.join(directory, entry.name)
+#

@@ -3,30 +3,31 @@ import argparse, os, sys
 
 from PyQt5 import QtWidgets
 
-from data    import Packet
-from io      import Reader
-from log     import Recorder
-from modules import BaseModule
-from ui      import DabbleViewer
+from io      import *
+from data    import *
+from log     import *
+from modules import *
+from ui      import *
 
 
 if __name__ == '__main__':
     """Dabble with some things."""
-    #cli = argparse.ArgumentParser()
-    #cli.add_argument('--dir', type=str)
+    cli = argparse.ArgumentParser()
+    cli.add_argument('--dir', type=str)
 
-    #args = cli.parse_args()
+    args = cli.parse_args()
 
-    #if not args.dir:
-    #    print('You must specify a directory where there is data.')
-    #    print('usage: dabble --dir [directory]')
-    #    exit(2)
+    if not args.dir:
+        print('You must specify a directory where there is data.')
+        print('usage: dabble --dir [directory]')
+        exit(2)
 
     # Make a QApplication.
     qapp = QtWidgets.QApplication(sys.argv)
 
     # Open up a view on the chosen directory.
-    ui = dabbleview(directory)
+    directory = args.dir
+    ui = DabbleView.DabbleView(directory)
 
     sys.exit(qapp.exec_())
 
